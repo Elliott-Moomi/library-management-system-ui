@@ -1,0 +1,36 @@
+module.exports = {
+  singleQuote: true,
+  printWidth: 100,
+  trailingComma: 'none',
+  bracketSpacing: true,
+  bracketSameLine: false,
+  arrowParens: 'always',
+  semi: true,
+  endOfLine: 'auto',
+
+  plugins: [require('@trivago/prettier-plugin-sort-imports')],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
+  importOrder: [
+    '<THIRD_PARTY_MODULES>',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*helper',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*util',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*mock',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*state',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*action',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*saga',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*endpoint',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*reducer',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*context',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*provider',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*hook',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*type',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*interface',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*model',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*container',
+    '(?:^\\\\.|^\\\\.\\\\./|^\\\\./)*component',
+    '\\.svg$',
+    '^[./](?!.*\\.scss$)',
+    '\\.scss$'
+  ]
+};
