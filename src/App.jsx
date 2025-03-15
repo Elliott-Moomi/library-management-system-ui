@@ -10,8 +10,6 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<BookTableContainer/>}/>
-                    <Route path="/manage" element={<div>my management</div>}/>
-                    {random()}
                 </Routes>
 
             </BrowserRouter>
@@ -19,12 +17,4 @@ function App() {
     );
 }
 
-const random=()=>{
-    return (
-        <Route path="/test" element={<div>my test</div>} >
-            <Route path="test/nuts" element={<div>deez nuts</div>}/>
-        </Route>
-    );
-
-}
 export default App;
