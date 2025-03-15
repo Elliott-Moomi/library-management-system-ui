@@ -1,0 +1,47 @@
+@use './colour' as colour;
+
+dialog {
+  padding: 1.25rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  margin: auto;
+  background-color: #fff;
+  position: fixed;
+  bottom: 25%;
+  top: 25%;
+
+  > button:first-of-type {
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+
+  &.delete {
+    width: 485px;
+    text-align: center;
+
+    > button {
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        margin-right: 20px;
+        width: 110px;
+        height: 35px;
+        font-size: 1rem;
+        border-radius: 8px;
+      }
+
+      &:nth-of-type(2) {
+        background-color: colour.$tableHeadColor;
+        color: colour.$backgroundColor;
+      }
+    }
+  }
+}
