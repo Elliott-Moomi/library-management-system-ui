@@ -1,0 +1,53 @@
+@use './colour' as colour;
+@use './responsive' as responsive;
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: colour.$tableBackgroundColor;
+
+  td {
+    border: 1px solid colour.$backgroundColor;
+    padding: 8px;
+  }
+
+  tr {
+    height: 70px;
+    &:hover {
+      background: colour.$backgroundColor;
+    }
+  }
+
+  th {
+    @extend td;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: colour.$tableHeadColor;
+    color: colour.$tableBackgroundColor;
+  }
+
+  td > button {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background-color: transparent;
+    &:hover {
+      background: colour.$hoverColor;
+    }
+  }
+
+  @include responsive.respond-to(md) {
+    th,
+    td {
+      display: block;
+    }
+  }
+
+  @include responsive.respond-to(lg) {
+    td,
+    th {
+      padding: 12px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+$breakpoints: (
+  'sm': '(max-width: 320px)',
+  'md': '(min-width: 321px) and (max-width: 576px)',
+  'lg': '(min-width: 577px) and (max-width: 768px)',
+  'xl': '(min-width: 769px)'
+);
+
+@mixin respond-to($size) {
+  @media #{map-get($breakpoints, $size)} {
+    @content;
+  }
+}

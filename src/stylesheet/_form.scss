@@ -1,0 +1,65 @@
+@use './colour' as colour;
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    width: 45%;
+
+    &:last-of-type {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.625rem;
+    font-size: 0.875rem;
+    border: 1px solid colour.$tableHeadColor;
+    border-radius: 4px;
+
+    &[type='button'] {
+      margin-right: 2.5rem;
+      width: 110px;
+      height: 35px;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background-color: colour.$tableHeadColor;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.7s ease;
+
+      &:hover {
+        background-color: #206099;
+      }
+
+      &:active {
+        background-color: colour.$tableHeadColor;
+      }
+    }
+  }
+
+  button {
+    width: 110px;
+    height: 35px;
+    border-radius: 8px;
+    color: colour.$tableHeadColor;
+  }
+}
