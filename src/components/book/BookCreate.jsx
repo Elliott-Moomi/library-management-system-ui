@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { formatDate } from '../../util/util';
 
-import { ReactComponent as CloseIcon } from '../../asset/icon/close.svg';
+import { ReactComponent as CloseIcon } from '../../icons/close.svg';
 
 import { FormInput } from '../input/FormInput';
 
@@ -14,13 +15,15 @@ export const BookCreate = ({ handleAddBook }) => {
     quantity: 0,
     publicationDate: ''
   });
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     const bookData = {
       ...formData,
-      publicationDate: formatDate(formData.releaseDate, 'en-ZA')
+      publicationDate: formatDate(formData.publicationDate)
     };
     handleAddBook(bookData);
+    navigate('/');
   };
 
   const handleCancel = () => {
@@ -43,7 +46,7 @@ export const BookCreate = ({ handleAddBook }) => {
 
   return (
     <dialog open>
-      <button>
+      <button onClick={() => navigate('/')}>
         <CloseIcon />
       </button>
 
