@@ -4,7 +4,7 @@
 table {
   border-collapse: collapse;
   width: 100%;
-  background-color: colour.$tableBackgroundColor;
+  background-color: colour.$textColor;
 
   td {
     border: 1px solid colour.$backgroundColor;
@@ -24,7 +24,7 @@ table {
     padding-bottom: 12px;
     text-align: left;
     background-color: colour.$tableHeadColor;
-    color: colour.$tableBackgroundColor;
+    color: colour.$textColor;
   }
 
   td > button {

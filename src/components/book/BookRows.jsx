@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import { BookDeleteContainer } from '../../container/book/BookDelete.container';
 import { BookEditContainer } from '../../container/book/BookEdit.container';
@@ -22,6 +22,7 @@ export const BookRows = ({ books }) => {
     setSelectedBook(null);
     setDialogType('');
   };
+  console.log('my books', books);
 
   const rows = useMemo(() => {
     return books.map((book) => (

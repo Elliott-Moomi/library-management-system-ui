@@ -10,6 +10,7 @@ header {
 
   > h1 {
     margin-right: 70px;
+    color: colour.$textColor;
   }
 
   > div:first-of-type {
@@ -33,7 +34,7 @@ header {
         margin-left: auto;
         border-radius: 8px;
         background-color: colour.$tableHeadColor;
-        color: colour.$backgroundColor;
+        color: colour.$textColor;
       }
 
       a {
@@ -48,8 +49,8 @@ header {
         border-radius: inherit;
 
         &.active {
-          background-color: #26486d;
-          color: #f9f9f9;
+          background-color: colour.$tableBackgroundColor;
+          color: colour.$textColor;
         }
       }
     }

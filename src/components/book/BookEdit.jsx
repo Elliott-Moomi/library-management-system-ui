@@ -19,7 +19,7 @@ export const BookEdit = ({ book, onClose, handleEditBook }) => {
   const handleSubmit = () => {
     const bookData = {
       ...formData,
-      releaseDate: formatDate(formData.releaseDate, 'en-ZA')
+      publicationDate: formatDate(formData.publicationDate)
     };
     handleEditBook(bookData);
   };

@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# library-management-system-ui
+
+A Library Management System frontend application built with React
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
