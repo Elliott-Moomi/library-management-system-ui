@@ -22,7 +22,6 @@ export const BookRows = ({ books }) => {
     setSelectedBook(null);
     setDialogType('');
   };
-  console.log('my books', books);
 
   const rows = useMemo(() => {
     return books.map((book) => (
