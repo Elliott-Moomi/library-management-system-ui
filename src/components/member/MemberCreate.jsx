@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { formatDate } from '../../util/util';
-
 import { ReactComponent as CloseIcon } from '../../icons/close.svg';
 
 import { FormInput } from '../input/FormInput';
@@ -19,11 +17,7 @@ export const MemberCreate = ({ handleAddMember }) => {
   const navigate = useNavigate();
 
   const handleSubmit = () => {
-    const memberData = {
-      ...formData,
-      publicationDate: formatDate(formData.publicationDate)
-    };
-    handleAddMember(memberData);
+    handleAddMember(FormData);
     navigate('/members');
   };
 

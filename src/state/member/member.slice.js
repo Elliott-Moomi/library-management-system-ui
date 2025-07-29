@@ -4,14 +4,14 @@ const initialState = {
   members: []
 };
 
-const bookSlice = createSlice({
+const memberSlice = createSlice({
   name: 'members',
   initialState,
   reducers: {
     setMembers: (state, action) => {
       state.members = action.payload;
     },
-    fetchMember: () => {},
+    fetchMembers: () => {},
 
     addMember: (state, action) => {
       state.members.push(action.payload);
