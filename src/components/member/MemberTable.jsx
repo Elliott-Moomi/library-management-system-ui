@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { MemberCreateContainer } from '../../container/member/MemberCreate.container';
 import { Header } from '../header/Header';
 import { MemberRow } from './MemberRow';
 
-export const MemberTable = ({ members }) => (
-  <>
-    <Header addBtn="Add Member" addPath="/members/add" />
-    <table>
+export const MemberTable = ({ members }) => {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  return (
+    <>
+      <Header addBtn="Add Member" onAddClick={() => setIsAddModalOpen(true)} />
+      {isAddModalOpen && (
+        <MemberCreateContainer onClose={() => setIsAddModalOpen(false)} />
+      )}
+      <table>
       <thead>
         <tr>
           <th>First Name</th>
@@ -23,4 +30,5 @@ export const MemberTable = ({ members }) => (
       </tbody>
     </table>
   </>
-);
+  );
+};

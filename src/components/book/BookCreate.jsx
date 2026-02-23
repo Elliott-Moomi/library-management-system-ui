@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { formatDate } from '../../util/util';
 
@@ -7,7 +6,7 @@ import { ReactComponent as CloseIcon } from '../../icons/close.svg';
 
 import { FormInput } from '../input/FormInput';
 
-export const BookCreate = ({ handleAddBook }) => {
+export const BookCreate = ({ handleAddBook, onClose }) => {
   const [formData, setFormData] = useState({
     title: '',
     author: '',
@@ -15,7 +14,6 @@ export const BookCreate = ({ handleAddBook }) => {
     quantity: 0,
     publicationDate: ''
   });
-  const navigate = useNavigate();
 
   const handleSubmit = () => {
     const bookData = {
@@ -23,7 +21,7 @@ export const BookCreate = ({ handleAddBook }) => {
       publicationDate: formatDate(formData.publicationDate)
     };
     handleAddBook(bookData);
-    navigate('/');
+    onClose();
   };
 
   const handleCancel = () => {
@@ -34,6 +32,7 @@ export const BookCreate = ({ handleAddBook }) => {
       quantity: 0,
       publicationDate: ''
     });
+    onClose();
   };
 
   const handleChange = (event) => {
@@ -46,7 +45,7 @@ export const BookCreate = ({ handleAddBook }) => {
 
   return (
     <dialog open>
-      <button onClick={() => navigate('/')}>
+      <button onClick={onClose}>
         <CloseIcon />
       </button>
 

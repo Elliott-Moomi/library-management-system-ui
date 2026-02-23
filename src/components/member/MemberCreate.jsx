@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { ReactComponent as CloseIcon } from '../../icons/close.svg';
 
 import { FormInput } from '../input/FormInput';
 
-export const MemberCreate = ({ handleAddMember }) => {
+export const MemberCreate = ({ handleAddMember, onClose }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -14,11 +13,10 @@ export const MemberCreate = ({ handleAddMember }) => {
     contact: '',
     books: []
   });
-  const navigate = useNavigate();
 
   const handleSubmit = () => {
-    handleAddMember(FormData);
-    navigate('/members');
+    handleAddMember(formData);
+    onClose();
   };
 
   const handleCancel = () => {
@@ -30,6 +28,7 @@ export const MemberCreate = ({ handleAddMember }) => {
       contact: '',
       books: []
     });
+    onClose();
   };
 
   const handleChange = (event) => {
@@ -42,7 +41,7 @@ export const MemberCreate = ({ handleAddMember }) => {
 
   return (
     <dialog open>
-      <button onClick={() => navigate('/members')}>
+      <button onClick={onClose}>
         <CloseIcon />
       </button>
 
