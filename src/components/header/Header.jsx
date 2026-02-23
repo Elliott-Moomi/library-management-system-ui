@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 
 import './header.scss';
 
-export const Header = ({ addBtn, addPath }) => {
+export const Header = ({ addBtn, addPath, onAddClick }) => {
   return (
     <>
       <header>
@@ -15,9 +15,13 @@ export const Header = ({ addBtn, addPath }) => {
           <button>
             <NavLink to="/members">Members</NavLink>
           </button>
-          <button>
+          {onAddClick ? (
+            <button type="button" onClick={onAddClick}>
+              {addBtn}
+            </button>
+          ) : (
             <Link to={addPath}>{addBtn}</Link>
-          </button>
+          )}
         </div>
       </header>
       <Outlet />

@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
+import { BookCreateContainer } from '../../container/book/BookCreate.container';
 import { Header } from '../header/Header';
 import { BookRows } from './BookRows';
 
 export const BookTable = ({ books }) => {
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
   return (
     <>
-      <Header addBtn="Add Book" addPath="/books/add" />
+      <Header addBtn="Add Book" onAddClick={() => setIsAddModalOpen(true)} />
+      {isAddModalOpen && (
+        <BookCreateContainer onClose={() => setIsAddModalOpen(false)} />
+      )}
       <table>
         <thead>
           <tr>

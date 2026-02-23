@@ -4,11 +4,11 @@ import { addBook } from '../../state/book/book.slice';
 
 import { BookCreate } from '../../components/book/BookCreate';
 
-export const BookCreateContainer = () => {
+export const BookCreateContainer = ({ onClose }) => {
   const dispatch = useDispatch();
   const handleAddBook = (book) => {
     dispatch(addBook(book));
   };
 
-  return <BookCreate handleAddBook={handleAddBook} />;
+  return <BookCreate handleAddBook={handleAddBook} onClose={onClose} />;
 };
