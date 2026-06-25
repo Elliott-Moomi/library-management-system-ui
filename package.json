@@ -22,9 +22,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
-    "format": "yarn prettier --write ."
+    "format": "yarn prettier --write .",
+    "lint": "eslint ."
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +46,8 @@
     ]
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^5.2.2"
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "eslint": "8",
+    "eslint-config-react-app": "^7.0.1"
   }
 }
