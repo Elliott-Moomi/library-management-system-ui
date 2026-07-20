@@ -1,4 +1,4 @@
-const MOCK_USERS = [
+export const MOCK_USERS = [
   {
     id: 1,
     firstName: 'Alice',
