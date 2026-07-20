@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { EmptyState } from '../empty-state/EmptyState';
+
 import { MemberCreateContainer } from '../../container/member/MemberCreate.container';
 
 import { Header } from '../header/Header';
@@ -25,7 +27,15 @@ export const MemberTable = ({ members }) => {
           </tr>
         </thead>
         <tbody>
-          <MemberRow members={members} />
+          {members.length > 0 ? (
+            <MemberRow members={members} />
+          ) : (
+            <tr>
+              <td colSpan={8}>
+                <EmptyState message="No members found" />
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>
