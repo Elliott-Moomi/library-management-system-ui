@@ -1,20 +1,10 @@
 import axios from 'axios';
 
-
-
 import { getData, postData } from '../util/api';
-
-
 
 import { addMember, fetchMembers, setMembers } from '../state/member/member.slice';
 
-
-
 import { all, call, put, takeLatest } from 'redux-saga/effects';
-
-
-
-
 
 const memberPath = 'http://localhost:8080/api/members';
 
@@ -35,16 +25,15 @@ export function* watchForFetchMembersSaga() {
 export function* addMemberSaga({ payload }) {
   try {
     yield call(axios.request, postData(memberPath, payload));
-
   } catch (error) {
     console.error(error);
   }
 }
 
-export function* watchForAddBookSaga(){
+export function* watchForAddBookSaga() {
   yield takeLatest(addMember.type, addMemberSaga);
 }
 
 export function* memberSaga() {
-  yield all([watchForFetchMembersSaga(),watchForAddBookSaga()]);
+  yield all([watchForFetchMembersSaga(), watchForAddBookSaga()]);
 }

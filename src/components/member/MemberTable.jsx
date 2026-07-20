@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 
+import { EmptyState } from '../empty-state/EmptyState';
+
 import { MemberCreateContainer } from '../../container/member/MemberCreate.container';
 
 import { Header } from '../header/Header';
 import { MemberRow } from './MemberRow';
-import { EmptyState } from '../empty-state/EmptyState';
 
 export const MemberTable = ({ members }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -26,15 +27,15 @@ export const MemberTable = ({ members }) => {
           </tr>
         </thead>
         <tbody>
-        {members.length > 0 ? (
-          <MemberRow members={members} />
-        ) : (
-          <tr>
-            <td colSpan={8}>
-              <EmptyState message="No members found" />
-            </td>
-          </tr>
-        )}
+          {members.length > 0 ? (
+            <MemberRow members={members} />
+          ) : (
+            <tr>
+              <td colSpan={8}>
+                <EmptyState message="No members found" />
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>
