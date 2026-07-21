@@ -33,6 +33,11 @@ export const MemberEdit = ({ member, onClose, handleEditMember }) => {
     });
   };
 
+  const handleSubmit = () => {
+    handleEditMember(formData);
+    onClose();
+  };
+
   return (
     <dialog open>
       <button onClick={onClose}>
@@ -75,7 +80,7 @@ export const MemberEdit = ({ member, onClose, handleEditMember }) => {
         <FormInput id="contact" label="Contact:" value={formData.contact} onChange={handleChange} />
 
         <fieldset>
-          <input type="button" value="Submit" onClick={handleEditMember} />
+          <input type="button" value="Submit" onClick={handleSubmit} />
           <button type="reset" onClick={handleCancel}>
             Cancel
           </button>

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { getData, postData } from '../util/api';
+import { getData, postData, putData } from '../util/api';
 
-import { addMember, fetchMembers, setMembers } from '../state/member/member.slice';
+import { addMember, editMember, fetchMembers, setMembers } from '../state/member/member.slice';
 
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
@@ -34,6 +34,19 @@ export function* watchForAddBookSaga() {
   yield takeLatest(addMember.type, addMemberSaga);
 }
 
+export function* editMemberSaga({ payload }) {
+  try {
+    console.log('my edit data', payload);
+    yield call(axios.request, putData(memberPath, payload));
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export function* watchForEditMemberSaga() {
+  yield takeLatest(editMember.type, editMemberSaga);
+}
+
 export function* memberSaga() {
-  yield all([watchForFetchMembersSaga(), watchForAddBookSaga()]);
+  yield all([watchForFetchMembersSaga(), watchForAddBookSaga(), watchForEditMemberSaga()]);
 }
