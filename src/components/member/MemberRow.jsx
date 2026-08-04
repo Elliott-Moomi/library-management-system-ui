@@ -16,7 +16,6 @@ export const MemberRow = ({ members }) => {
   const handleOpenDialog = (member, type) => {
     setSelectedMember(member);
     setDialogType(type);
-    console.log('memeber state', selectedMember, dialogType);
   };
 
   const handleCloseDialog = () => {
