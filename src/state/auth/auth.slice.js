@@ -22,7 +22,6 @@ const authSlice = createSlice({
       state.registerError = null;
       state.registerSuccess = true;
       state.user = action.payload;
-      console.log('under slice', action.payload);
     },
 
     registerFailure: (state, action) => {

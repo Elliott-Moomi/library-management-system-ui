@@ -12,7 +12,6 @@ function* registerUserSaga({ payload }) {
   try {
     const response = yield call(axios.request, postData(authPath, payload));
 
-    console.log('register response', response);
     yield put(registerSuccess(response));
   } catch (error) {
     const message =
