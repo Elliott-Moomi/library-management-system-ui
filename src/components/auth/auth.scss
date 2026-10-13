@@ -1,0 +1,68 @@
+@use '../../stylesheet/colour' as colour;
+
+.auth {
+  padding: 20px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  margin: auto;
+  background-color: #fff;
+  text-align: center;
+
+  > form {
+    display: flex;
+    flex-direction: column;
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      border: none;
+      width: 80%;
+
+      &:last-of-type {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        width: 50%;
+      }
+    }
+
+    label {
+      margin: 8px;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      font-size: 0.875rem;
+      border: 1px solid colour.$tableHeadColor;
+      border-radius: 4px;
+
+      &[type='submit'] {
+        margin-right: 40px;
+        width: 200px;
+        height: 35px;
+        margin-bottom: 40px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: colour.$tableHeadColor;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.7s ease;
+
+        &:hover {
+          background-color: #206099;
+        }
+
+        &:active {
+          background-color: colour.$tableHeadColor;
+        }
+      }
+    }
+  }
+}
