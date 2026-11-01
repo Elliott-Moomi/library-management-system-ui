@@ -12,7 +12,7 @@ const getCookie = (cookieName) => {
 };
 
 export const getHeaders = () => ({
-  Authorization: 'Bearer ' + getCookie('jwtToken')
+  Authorization: 'Bearer ' + getCookie('lmsToken')
 });
 
 export const formatDate = (arg, locale = 'en-ZA') => {

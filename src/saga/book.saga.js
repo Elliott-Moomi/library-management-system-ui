@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 import { getData, postData, putData, removeData } from '../util/api';
+import { API_HOST, getHeaders } from '../util/util';
 
 import { addBook, deleteBook, editBook, fetchBooks, setBooks } from '../state/book/book.slice';
 
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-const bookPath = 'http://localhost:8080/api/books';
+const bookPath = `${API_HOST}books`;
 
 export function* addBookSaga({ payload }) {
   try {
@@ -22,6 +23,7 @@ export function* watchForAddBook() {
 
 export function* fetchBooksSaga() {
   try {
+    console.log(`my headers: ${getHeaders()}`);
     const responseData = yield call(axios.request, getData(bookPath));
 
     yield put(setBooks(responseData.data));

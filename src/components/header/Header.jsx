@@ -10,7 +10,7 @@ export const Header = ({ addBtn, addPath, onAddClick }) => {
         <h1>Library Management System</h1>
         <div>
           <button>
-            <NavLink to="/">Books</NavLink>
+            <NavLink to="/books">Books</NavLink>
           </button>
           <button>
             <NavLink to="/members">Members</NavLink>

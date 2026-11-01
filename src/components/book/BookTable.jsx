@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { EmptyState } from '../empty-state/EmptyState';
+
 import { BookCreateContainer } from '../../container/book/BookCreate.container';
 
 import { Header } from '../header/Header';
@@ -25,7 +27,15 @@ export const BookTable = ({ books }) => {
           </tr>
         </thead>
         <tbody>
-          <BookRows books={books} />
+          {books.length > 0 ? (
+            <BookRows books={books} />
+          ) : (
+            <tr>
+              <td colSpan={8}>
+                <EmptyState message="No books found" />
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </>

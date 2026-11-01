@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import { getData, postData, putData, removeData } from '../util/api';
+import { API_HOST } from '../util/util';
 
 import {
   addMember,
@@ -12,7 +13,7 @@ import {
 
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-const memberPath = 'http://localhost:8080/api/members';
+const memberPath = `${API_HOST}members`;
 
 export function* fetchMembersSaga() {
   try {

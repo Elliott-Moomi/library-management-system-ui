@@ -55,7 +55,7 @@ export const RegisterForm = ({ handleRegister }) => {
         </fieldset>
       </form>
       <p className="auth-link">
-        Already have an account? <Link to="/login">Sign in</Link>{' '}
+        Already have an account? <Link to="/">Sign in</Link>{' '}
       </p>
     </dialog>
   );
