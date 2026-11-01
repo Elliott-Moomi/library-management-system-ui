@@ -1,16 +1,41 @@
-import axios from 'axios';
+import { authRequest } from '../util/api';
+import { API_HOST } from '../util/util';
 
-import { postData } from '../util/api';
-
-import { registerFailure, registerRequest, registerSuccess } from '../state/auth/auth.slice';
+import {
+  loginFailure,
+  loginRequest,
+  loginSuccess,
+  registerFailure,
+  registerRequest,
+  registerSuccess
+} from '../state/auth/auth.slice';
 
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-const authPath = 'http://localhost:8080/api/register';
+const authPath = API_HOST;
+
+function* loginSaga({ payload }) {
+  try {
+    const response = yield call(authRequest, `${authPath}login`, payload);
+    document.cookie = `lmsToken=${response.data}; path=/`;
+
+    yield put(loginSuccess(response));
+  } catch (error) {
+    const message =
+      error.response?.data?.message ||
+      error.response?.data?.error ||
+      'Login failed, please try again';
+    yield put(loginFailure(message));
+  }
+}
+
+export function* watchLoginSaga() {
+  yield takeLatest(loginRequest.type, loginSaga);
+}
 
 function* registerUserSaga({ payload }) {
   try {
-    const response = yield call(axios.request, postData(authPath, payload));
+    const response = yield call(authRequest, `${authPath}register`, payload);
 
     yield put(registerSuccess(response));
   } catch (error) {
@@ -27,5 +52,5 @@ export function* watchRegisterUserSaga() {
 }
 
 export function* authSaga() {
-  yield all([watchRegisterUserSaga()]);
+  yield all([watchRegisterUserSaga(), watchLoginSaga()]);
 }

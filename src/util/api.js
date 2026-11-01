@@ -1,24 +1,29 @@
 import axios from 'axios';
 
-import { API_HOST } from './util';
+import { getHeaders } from './util';
 
 export const getData = (path) => {
   return {
     method: 'GET',
     url: path,
-    headers: {}
+    headers: {
+      'Content-Type': 'application/json',
+      ...getHeaders()
+    }
   };
 };
 
-export const login = async (path, user) => {
-  return await axios.post(`${API_HOST}${path}`, user);
+export const authRequest = async (path, user) => {
+  return await axios.post(path, user);
 };
+
 export const postData = (path, payload) => {
   return {
     method: 'POST',
     url: path,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      ...getHeaders()
     },
     data: payload
   };
@@ -29,7 +34,8 @@ export const putData = (path, payload) => {
     method: 'PUT',
     url: `${path}/${payload.id}`,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      ...getHeaders()
     },
     data: payload
   };
@@ -40,7 +46,8 @@ export const removeData = (path, payload) => {
     method: 'DELETE',
     url: `${path}/${payload}`,
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      ...getHeaders()
     }
   };
 };
