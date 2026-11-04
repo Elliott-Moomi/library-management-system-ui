@@ -40,7 +40,7 @@ You need Node.js, Yarn, and the API running at `http://localhost:8080`.
 
    ```bash
    yarn install
-   echo 'REACT_APP_API_URL=http://localhost:8080/api/' > .env
+   echo 'REACT_APP_API_URL=http://localhost:8080/api/v1/lms/' > .env
    yarn start
    ```
 
