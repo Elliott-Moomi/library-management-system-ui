@@ -1,72 +1,57 @@
-# library-management-system-ui
+# Library Management System
 
-A Library Management System frontend application built with React
+Web interface for a library. Staff register and sign in, then manage the catalogue and the people who borrow from it.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+After login the app stores a JWT in the `lmsToken` cookie and sends it as `Authorization: Bearer …` on later requests.
 
-## Available Scripts
+| Path | What it does |
+| --- | --- |
+| `/` | Sign in |
+| `/register` | Create an account |
+| `/books` | List books, and add, edit, or remove one |
+| `/members` | List members, and add, edit, or remove one |
 
-In the project directory, you can run:
+A new account is a `USER`. The API lets that role read books. Adding or changing books, and anything under members, requires `LIBRARIAN` or `ADMIN`. Deleting a book requires `ADMIN`.
 
-### `yarn start`
+## Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React 19, built with Create React App
+- React Router for the pages above
+- Redux Toolkit for state, Redux Saga for API calls
+- Axios for HTTP
+- Sass for styles
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The UI talks to the `library-management-system` API: Spring Boot 3, Spring Security with JWT, and PostgreSQL.
 
-### `yarn test`
+## Run it
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+You need Node.js, Yarn, and the API running at `http://localhost:8080`.
 
-### `yarn build`
+1. In the API project, create the `library_management_system` database, set `JWT_SECRET`, and start the server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   export JWT_SECRET=your-secret
+   ./mvnw spring-boot:run
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   The API allows `http://localhost:3000` by default. Database settings live in that project's `application.yml`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. In this project, install dependencies and point the UI at the API. `.env` is not committed. The value needs the trailing slash, because request paths are appended to it.
 
-### `yarn eject`
+   ```bash
+   yarn install
+   echo 'REACT_APP_API_URL=http://localhost:8080/api/' > .env
+   yarn start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Open [http://localhost:3000](http://localhost:3000), register or sign in, then use Books and Members.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Scripts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| Command | What it does |
+| --- | --- |
+| `yarn start` | Dev server on port 3000 |
+| `yarn test` | Run the tests once |
+| `yarn build` | Production build in `build/` |
+| `yarn lint` | ESLint |
+| `yarn format` | Prettier write |
