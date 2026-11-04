@@ -4,12 +4,12 @@ Web interface for a library. Staff register and sign in, then manage the catalog
 
 After login the app stores a JWT in the `lmsToken` cookie and sends it as `Authorization: Bearer …` on later requests.
 
-| Path | What it does |
-| --- | --- |
-| `/` | Sign in |
-| `/register` | Create an account |
-| `/books` | List books, and add, edit, or remove one |
-| `/members` | List members, and add, edit, or remove one |
+| Path        | What it does                               |
+| ----------- | ------------------------------------------ |
+| `/`         | Sign in                                    |
+| `/register` | Create an account                          |
+| `/books`    | List books, and add, edit, or remove one   |
+| `/members`  | List members, and add, edit, or remove one |
 
 A new account is a `USER`. The API lets that role read books. Adding or changing books, and anything under members, requires `LIBRARIAN` or `ADMIN`. Deleting a book requires `ADMIN`.
 
@@ -48,10 +48,10 @@ You need Node.js, Yarn, and the API running at `http://localhost:8080`.
 
 ## Scripts
 
-| Command | What it does |
-| --- | --- |
-| `yarn start` | Dev server on port 3000 |
-| `yarn test` | Run the tests once |
-| `yarn build` | Production build in `build/` |
-| `yarn lint` | ESLint |
-| `yarn format` | Prettier write |
+| Command       | What it does                 |
+| ------------- | ---------------------------- |
+| `yarn start`  | Dev server on port 3000      |
+| `yarn test`   | Run the tests once           |
+| `yarn build`  | Production build in `build/` |
+| `yarn lint`   | ESLint                       |
+| `yarn format` | Prettier write               |
