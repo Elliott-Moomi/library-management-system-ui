@@ -17,7 +17,6 @@ export const BookTable = ({ books }) => {
       <table>
         <thead>
           <tr>
-            <th>ID</th>
             <th>Title</th>
             <th>Author</th>
             <th>ISBN</th>
