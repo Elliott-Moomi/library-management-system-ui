@@ -26,7 +26,6 @@ export const BookRows = ({ books }) => {
   const rows = useMemo(() => {
     return books.map((book) => (
       <tr key={book.id}>
-        <td>{book.id}</td>
         <td>{book.title}</td>
         <td>{book.author}</td>
         <td>{book.isbn}</td>
